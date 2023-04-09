@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <script src="https://unpkg.com/three@0.147.0/build/three.min.js"></script>
+    <script>
+        // wait for page to load
+        window.addEventListener('DOMContentLoaded', init);
+        function init() {
+
+            // specify the size
+            const width = 960;
+            const height = 540;
+
+            // create a renderer
+            const renderer = new THREE.WebGLRenderer({
+                canvas: document.querySelector('#myCanvas')
+            });
+            renderer.setPixelRatio(window.devicePixelRatio);
+            renderer.setSize(width, height);
+
+            // create a scene
+            const scene = new THREE.Scene();
+
+            // create a camera
+            const camera = new THREE.PerspectiveCamera(45, width / height);
+            camera.position.set(0, 0, +1000);
+
+            // create a box
+            const geometry = new THREE.BoxGeometry(400, 400, 400);
+            const material = new THREE.MeshNormalMaterial();
+            const box = new THREE.Mesh(geometry, material);
+            scene.add(box);
+
+            tick();
+
+            function tick() {
+                box.rotation.y += 0.01;
+                renderer.render(scene, camera); // rendering
+
+                requestAnimationFrame(tick);
+            }
+        }
+    </script>
+</head>
+
+
+<body>
+    <canvas id="myCanvas"></canvas>
+</body>
+
+</html>
