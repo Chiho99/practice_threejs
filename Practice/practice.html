@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <script src="https://unpkg.com/three@0.147.0/build/three.min.js"></script>
+    <script>
+        window.addEventListener('DOMContentLoaded', init);
+
+        function init() {
+            const width = 960;
+            const height = 540;
+
+            // レンダラーを作成
+            const renderer = new THREE.WebGLRenderer({
+                canvas: document.querySelector('#myCanvas')
+            });
+            renderer.setSize(width, height);
+            renderer.setPixelRatio(window.devicePixelRatio);
+
+            // シーンを作成
+            const scene = new THREE.Scene();
+            scene.background = new THREE.Color(0x00ffff);
+
+            // カメラを作成
+            const camera = new THREE.PerspectiveCamera(45, width / height, 1, 10000);
+            // カメラの初期座標を設定（X座標:0, Y座標:0, Z座標:0）
+            camera.position.set(800, -100, 1200);
+            camera.lookAt(scene.position);
+
+            const colorYellow = new THREE.Color("rgb(222,205,83)");
+            const colorWhite = new THREE.Color("rgb(255,255,255)");
+            const colorBlown = new THREE.Color("rgb(206,126,0)");
+            const colorBlack = new THREE.Color("rgb(0,0,0)");
+
+            // 顔を作成
+            const geometryFace = new THREE.BoxGeometry(300, 300, 300);
+            const materialFace = new THREE.MeshStandardMaterial({ color: colorYellow });
+            const boxFace = new THREE.Mesh(geometryFace, materialFace);
+            boxFace.position.set(0, 100, 0);
+            scene.add(boxFace);
+
+            // シャツを作成
+            const geometryShirt = new THREE.BoxGeometry(300, 50, 300);
+            const materialShirt = new THREE.MeshStandardMaterial({ color: colorWhite });
+            const boxShirt = new THREE.Mesh(geometryShirt, materialShirt);
+            boxShirt.position.set(0, -75, 0);
+            scene.add(boxShirt);
+
+            // ズボンを作成
+            const geometryPants = new THREE.BoxGeometry(300, 50, 300);
+            const materialPants = new THREE.MeshStandardMaterial({ color: colorBlown });
+            const boxPants = new THREE.Mesh(geometryPants, materialPants);
+            boxPants.position.set(0, -125, 0);
+            scene.add(boxPants);
+
+            // 左足裾を作成
+            const geometryLefthem = new THREE.BoxGeometry(50, 50, 50);
+            const materialLefthem = new THREE.MeshStandardMaterial({ color: colorBlown });
+            const boxLefthem = new THREE.Mesh(geometryLefthem, materialLefthem);
+            boxLefthem.position.set(-100, -150, 0);
+            scene.add(boxLefthem);
+
+            // 左足を作成
+            const geometryLeftfoot = new THREE.BoxGeometry(25, 70, 50);
+            const materialLeftfoot = new THREE.MeshStandardMaterial({ color: colorYellow });
+            const boxLeftfoot = new THREE.Mesh(geometryLeftfoot, materialLeftfoot);
+            boxLeftfoot.position.set(-100, -210, 0);
+            scene.add(boxLeftfoot);
+
+            // 左足靴下を作成
+            const geometryLeftSox = new THREE.BoxGeometry(25, 50, 50);
+            const materialLeftSox = new THREE.MeshStandardMaterial({ color: colorWhite });
+            const boxLeftSox = new THREE.Mesh(geometryLeftSox, materialLeftSox);
+            boxLeftSox.position.set(-100, -270, 0);
+            scene.add(boxLeftSox);
+
+            // 左靴を作成
+            const geometryLeftShoe1 = new THREE.BoxGeometry(50, 20, 70);
+            const materialLeftShoe1 = new THREE.MeshStandardMaterial({ color: colorBlack });
+            const boxLeftShoe1 = new THREE.Mesh(geometryLeftShoe1, materialLeftShoe1);
+            boxLeftShoe1.position.set(-100, -280, 0);
+            scene.add(boxLeftShoe1);
+            const geometryLeftShoe2 = new THREE.BoxGeometry(50, 20, 200);
+            const materialLeftShoe2 = new THREE.MeshStandardMaterial({ color: colorBlack });
+            const boxLeftShoe2 = new THREE.Mesh(geometryLeftShoe2, materialLeftShoe2);
+            boxLeftShoe2.position.set(-100, -300, 0);
+            scene.add(boxLeftShoe2);
+
+            // 右足裾を作成
+            const geometryRighthem = new THREE.BoxGeometry(50, 50, 50);
+            const materialRighthem = new THREE.MeshStandardMaterial({ color: colorBlown });
+            const boxRighthem = new THREE.Mesh(geometryRighthem, materialRighthem);
+            boxRighthem.position.set(100, -150, 0);
+            scene.add(boxRighthem);
+
+            // 右足を作成
+            const geometryRightfoot = new THREE.BoxGeometry(25, 70, 50);
+            const materialRightfoot = new THREE.MeshStandardMaterial({ color: colorYellow });
+            const boxRightfoot = new THREE.Mesh(geometryRightfoot, materialRightfoot);
+            boxRightfoot.position.set(100, -210, 0);
+            scene.add(boxRightfoot);
+
+            // 右足靴下を作成
+            const geometryRightSox = new THREE.BoxGeometry(25, 50, 50);
+            const materialRightSox = new THREE.MeshStandardMaterial({ color: colorWhite });
+            const boxRightSox = new THREE.Mesh(geometryRightSox, materialRightSox);
+            boxRightSox.position.set(100, -260, 0);
+            scene.add(boxRightSox);
+
+            // 右靴を作成
+            const geometryRightShoe1 = new THREE.BoxGeometry(50, 20, 70);
+            const materialRightShoe1 = new THREE.MeshStandardMaterial({ color: colorBlack });
+            const boxRightShoe1 = new THREE.Mesh(geometryRightShoe1, materialRightShoe1);
+            boxRightShoe1.position.set(100, -280, 0);
+            scene.add(boxRightShoe1);
+            const geometryRightShoe2 = new THREE.BoxGeometry(50, 20, 200);
+            const materialRightShoe2 = new THREE.MeshStandardMaterial({ color: colorBlack });
+            const boxRightShoe2 = new THREE.Mesh(geometryRightShoe2, materialRightShoe2);
+            boxRightShoe2.position.set(100, -300, 0);
+            scene.add(boxRightShoe2);
+
+            // 右手を作成
+            const geometryRightarm = new THREE.BoxGeometry(50, 50, 50);
+            const materialRightarm = new THREE.MeshStandardMaterial({ color: colorWhite });
+            const boxRightarm = new THREE.Mesh(geometryRightarm, materialRightarm);
+            boxRightarm.position.set(170, 50, 0);
+            scene.add(boxRightarm);
+
+
+            // 平行光源
+            const light = new THREE.DirectionalLight(0xffffff);
+            light.intensity = 2; // 光の強さを倍に
+            light.position.set(1, 1, 2); // ライトの方向
+            // シーンに追加
+            scene.add(light);
+
+            // レンダリング
+            // renderer.render(scene, camera);
+            let mouseX = 0; // マウス座標
+            let rot = 0;
+            // マウス座標はマウスが動いた時のみ取得できる
+            document.addEventListener('mousemove', event => {
+                mouseX = event.pageX;
+            });
+
+            tick();
+            // 毎フレーム時に実行されるループイベントです
+            function tick() {
+                // マウスの位置に応じて角度を設定
+                // マウスのX座標がステージの幅の何%の位置にあるか調べてそれを360度で乗算する
+                const targetRot = (mouseX / window.innerWidth) * 360;
+                // イージングの公式を用いて滑らかにする
+                // 値 += (目標値 - 現在の値) * 減速値
+                rot += (targetRot - rot) * 0.02;
+
+                // ラジアンに変換する
+                const radian = (rot * Math.PI) / 180;
+                // 角度に応じてカメラの位置を設定
+                camera.position.x = 1000 * Math.sin(radian);
+                camera.position.z = 1000 * Math.cos(radian);
+                // 原点方向を見つめる
+                camera.lookAt(new THREE.Vector3(0, 0, 0));
+
+                boxFace.rotation.y += 0.005;
+                boxPants.rotation.y += 0.005;
+                boxShirt.rotation.y += 0.005;
+
+                boxLefthem.rotation.y += 0.005;
+                boxLeftfoot.rotation.y += 0.005;
+                boxLeftShoe1.rotation.y += 0.005;
+                boxLeftShoe2.rotation.y += 0.005;
+
+
+                boxRightarm.rotation.y += 0.005;
+                boxRighthem.rotation.y += 0.005;
+                boxRightfoot.rotation.y += 0.005;
+                boxRightShoe1.rotation.y += 0.005;
+                boxRightShoe2.rotation.y += 0.005;
+
+                // レンダリング
+                renderer.render(scene, camera);
+                requestAnimationFrame(tick);
+            }
+        }
+    </script>
+</head>
+
+
+<body>
+    <canvas id="myCanvas"></canvas>
+</body>
+
+</html>
